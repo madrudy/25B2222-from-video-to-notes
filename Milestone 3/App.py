@@ -1,22 +1,16 @@
-"""
-Milestone 3: Complete YouTube to Notes App
-Integrating:
-- Milestone 1: YOUR YouTube transcript extraction (from main.py)
-- Milestone 2: YOUR HuggingFace summarization (from summarizer.py)
-- Milestone 3: Streamlit UI
-"""
+
 
 import streamlit as st
 import sys
 import os
 
-# Import YOUR Milestone 1 code
+
 from youtube_extractor import get_youtube_transcript, extract_video_id
 
-# Import YOUR Milestone 2 code
+
 from summarizer import summarize_long_text, chunk_text
 
-# Page config
+
 st.set_page_config(
     page_title="YouTube to Notes - AI Summarizer",
     page_icon="📹",
@@ -64,7 +58,7 @@ def main():
     input_text = None
     source_info = None
     
-    # TAB 1: YouTube URL (YOUR MILESTONE 1)
+    # TAB 1: YouTube URL ( MILESTONE 1)
     with tab1:
         st.markdown("### Extract transcript from YouTube video")
         st.caption("Uses your Milestone 1 code (YouTube Transcript API)")
@@ -85,7 +79,7 @@ def main():
             else:
                 with st.spinner("📥 Extracting transcript from YouTube..."):
                     try:
-                        # YOUR MILESTONE 1 CODE
+                        # MILESTONE 1 CODE
                         raw_text, video_id, segments = get_youtube_transcript(youtube_url)
                         
                         input_text = raw_text
@@ -180,7 +174,7 @@ def main():
         status_text = st.empty()
         
         try:
-            # Step 1: Chunking (YOUR M2 CODE)
+            # Step 1: Chunking (M2 CODE)
             status_text.text("Step 1/3: Chunking text...")
             progress_bar.progress(0.1)
             
@@ -190,7 +184,7 @@ def main():
             status_text.text(f"Step 1/3: Created {num_chunks} chunks ✓")
             progress_bar.progress(0.3)
             
-            # Step 2: Summarization (YOUR M2 CODE)
+            # Step 2: Summarization (M2 CODE)
             status_text.text("Step 2/3: Summarizing chunks with BART model...")
             progress_bar.progress(0.4)
             
